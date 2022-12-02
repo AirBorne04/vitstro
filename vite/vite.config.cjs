@@ -1,10 +1,9 @@
 // vite.config.ts
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
-import solidPlugin from '@vitejs/plugin-react';
+import reactPlugin from '@vitejs/plugin-react';
 import mix from 'vite-plugin-mix';
 
-console.log(mix);
 const rootPath = process.cwd();
 
 export default defineConfig({
@@ -19,7 +18,7 @@ export default defineConfig({
   },
   plugins: [
     tsconfigPaths(),
-    solidPlugin(),
+    reactPlugin(),
     mix({
       handler: './vite/404.js',
     }),
@@ -32,7 +31,7 @@ export default defineConfig({
     proxy: {
       // with options
       '^/api/.*': {
-        target: 'http://localhost:8788',
+        target: 'http://localhost:3000',
         changeOrigin: true
       },
     }

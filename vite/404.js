@@ -8,7 +8,8 @@ app.get("*", (req, res, next) => {
     !req.path.startsWith("/@") &&
     // no file extension
     req.path.split("/").pop().indexOf(".") < 0 ) {
-    res.redirect("/vite/index.html");
+    req.url = "/vite/index.html";
+    next();
   } else {
     next();
   }
